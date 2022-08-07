@@ -1,3 +1,5 @@
+import decor.DataDecoration
+import decor.Decoration
 import java.util.*
 
 fun main(args: Array<String>) {
@@ -21,6 +23,14 @@ fun main(args: Array<String>) {
     eagerMap();
 
     higherOrderFunction();
+
+    buildAquarium();
+
+    makeFish();
+
+    makeDecorations();
+    makeDataDecorations();
+
 }
 
 
@@ -194,9 +204,59 @@ fun higherOrderFunction() {
     println(updateDirty(15, Aquarium()::increaseDirty));
 }
 
+//fun increaseDirty( start: Int ) = start + 1;
+
 fun updateDirty(dirty: Int, operation: (Int) -> Int): Int {
     return operation(dirty)
 }
 
-//fun increaseDirty( start: Int ) = start + 1;
+fun buildAquarium() {
+    val myAquarium = Aquarium(numberOfFish = 29)
+    myAquarium.printSize()
+    println(myAquarium.volume);
+    myAquarium.volume=50;
+    println(myAquarium.volume);
+    myAquarium.printSize()
+
+
+    val myTower = TowerTank(diameter = 25, height = 40)
+    myTower.printSize();
+}
+
+fun makeFish() {
+    val shark = Shark()
+    val pleco = Plecostomus()
+
+    println("Shark: ${shark.color}")
+    println("Plecostomus: ${pleco.color}")
+}
+
+fun makeDecorations() {
+    val decoration1 = Decoration("granite")
+    println(decoration1)
+
+    val decoration2 = Decoration("slate")
+    println(decoration2)
+
+    val decoration3 = Decoration("slate")
+    println(decoration3)
+
+    println (decoration1.equals(decoration2))
+    println (decoration3.equals(decoration2))
+}
+
+fun makeDataDecorations() {
+    val decoration1 = DataDecoration("granite")
+    println(decoration1)
+
+    val decoration2 = DataDecoration("slate")
+    println(decoration2)
+
+    val decoration3 = DataDecoration("slate")
+    println(decoration3)
+
+    println (decoration1.equals(decoration2))
+    println (decoration3.equals(decoration2))
+}
+
 
